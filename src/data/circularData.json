@@ -1,0 +1,105 @@
+{
+  "circular": {
+    "circular_number": "SEBI/HO/DDHS/DDHS-PoD-1/P/CIR/2025/0000000073",
+    "date": "May 16, 2025",
+    "subject": "Review of provisions pertaining to Electronic Book Provider (EBP) platform to increase its efficacy and utility",
+    "applicable_to": [
+      "Issuers of Non-convertible Securities (NCS), NCRPS, and municipal bonds",
+      "Registered InvITs, REITs, SM REITs",
+      "Recognised Stock Exchanges, Depositories, Clearing Corporations",
+      "Registered CRAs, Debenture Trustees, Merchant Bankers, RTAs, Bankers to an Issue, Stock Brokers, DPs",
+      "Other relevant market participants"
+    ],
+    "modifications": {
+      "chapter_VI": {
+        "mandatory_EBP_use": {
+          "threshold": "Rs. 20 crore",
+          "conditions": [
+            "Single issue of Rs. 20 crore or more",
+            "Shelf issue with cumulative amount of Rs. 20 crore or more in a financial year",
+            "Subsequent issue where total previous issues ≥ Rs. 20 crore"
+          ]
+        },
+        "optional_use_EBP": [
+          "Securitised debt instruments",
+          "Security receipts",
+          "CPs or CDs",
+          "Units of REITs, SM REITs, InvITs"
+        ],
+        "issuer_disclosures": {
+          "placement_memorandum": {
+            "timing": {
+              "existing_issuer": "2 working days before issue opening date",
+              "first_time_issuer": "3 working days before issue opening date"
+            },
+            "contents": [
+              "Issue size",
+              "Green shoe portion (not exceeding 5x base size)",
+              "Disclosure of green shoe exercised in previous FY"
+            ]
+          }
+        },
+        "allotment_basis": {
+          "cutoff_allotment": "Pro-rata if multiple bids at cutoff"
+        },
+        "anchor_investors": {
+          "thresholds": {
+            "AAA/AA+/AA/AA-": "≤30% of base size",
+            "A+/A-": "≤40% of base size",
+            "Others": "≤50% of base size"
+          },
+          "disclosures_required": [
+            "Anchor portion in memorandum",
+            "Details of anchor investors and allocated quantum",
+            "Electronic confirmation by T-1 day"
+          ]
+        },
+        "EBP_reporting": {
+          "fields_to_disclose": [
+            "Bidding date",
+            "Issuer Name",
+            "ISIN",
+            "Issue Description",
+            "Type of Issuance",
+            "Allotment date",
+            "Face Value",
+            "Credit Rating",
+            "Type of Book Bidding",
+            "Price",
+            "Spread",
+            "Yield",
+            "Allotment/settlement manner",
+            "Links to GID/PPM and KID/Term sheet",
+            "Base and Green Shoe sizes",
+            "Amount raised",
+            "Maturity details",
+            "Coupon details",
+            "Successful bidders and investor categories",
+            "Secured/Unsecured",
+            "Anchor investor data",
+            "QIB/Non-QIB data",
+            "Cutoff and Weighted average yields/prices"
+          ]
+        }
+      }
+    },
+    "effective_dates": {
+      "immediate": "Other provisions",
+      "3_months": ["Clauses 5.2, 8.1.2, 8.1.4, 8.1.5, 12.2 of Chapter VI", "Clause 3 of Chapter VII"],
+      "6_months": ["Clauses 3 and 7.11.3 of Chapter VI"]
+    },
+    "annexure": {
+      "bid_book": [
+        { "bidder": "A", "amount": 300, "price": 100, "timestamp": "10:02:10" },
+        { "bidder": "B", "amount": 100, "price": 100.05, "timestamp": "10:11:15" },
+        { "bidder": "C", "amount": 150, "price": 100.05, "timestamp": "10:12:10" },
+        { "bidder": "D", "amount": 400, "price": 100.04, "timestamp": "10:15:00" },
+        { "bidder": "E", "amount": 500, "price": 99.99, "timestamp": "10:32:10" },
+        { "bidder": "C", "amount": 150, "price": 100.03, "timestamp": "10:12:10" },
+        { "bidder": "F", "amount": 300, "price": 100, "timestamp": "10:45:00" },
+        { "bidder": "G", "amount": 200, "price": 99.98, "timestamp": "10:51:10" },
+        { "bidder": "B", "amount": 100, "price": 100.04, "timestamp": "10:55:12" }
+      ]
+    }
+  }
+}
