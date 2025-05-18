@@ -1,105 +1,530 @@
 {
   "circular": {
-    "circular_number": "SEBI/HO/DDHS/DDHS-PoD-1/P/CIR/2025/0000000073",
-    "date": "May 16, 2025",
-    "subject": "Review of provisions pertaining to Electronic Book Provider (EBP) platform to increase its efficacy and utility",
-    "applicable_to": [
-      "Issuers of Non-convertible Securities (NCS), NCRPS, and municipal bonds",
-      "Registered InvITs, REITs, SM REITs",
-      "Recognised Stock Exchanges, Depositories, Clearing Corporations",
-      "Registered CRAs, Debenture Trustees, Merchant Bankers, RTAs, Bankers to an Issue, Stock Brokers, DPs",
-      "Other relevant market participants"
-    ],
-    "modifications": {
-      "chapter_VI": {
-        "mandatory_EBP_use": {
-          "threshold": "Rs. 20 crore",
-          "conditions": [
-            "Single issue of Rs. 20 crore or more",
-            "Shelf issue with cumulative amount of Rs. 20 crore or more in a financial year",
-            "Subsequent issue where total previous issues ≥ Rs. 20 crore"
-          ]
-        },
-        "optional_use_EBP": [
-          "Securitised debt instruments",
-          "Security receipts",
-          "CPs or CDs",
-          "Units of REITs, SM REITs, InvITs"
-        ],
-        "issuer_disclosures": {
-          "placement_memorandum": {
-            "timing": {
-              "existing_issuer": "2 working days before issue opening date",
-              "first_time_issuer": "3 working days before issue opening date"
-            },
-            "contents": [
-              "Issue size",
-              "Green shoe portion (not exceeding 5x base size)",
-              "Disclosure of green shoe exercised in previous FY"
-            ]
-          }
-        },
-        "allotment_basis": {
-          "cutoff_allotment": "Pro-rata if multiple bids at cutoff"
-        },
-        "anchor_investors": {
-          "thresholds": {
-            "AAA/AA+/AA/AA-": "≤30% of base size",
-            "A+/A-": "≤40% of base size",
-            "Others": "≤50% of base size"
-          },
-          "disclosures_required": [
-            "Anchor portion in memorandum",
-            "Details of anchor investors and allocated quantum",
-            "Electronic confirmation by T-1 day"
-          ]
-        },
-        "EBP_reporting": {
-          "fields_to_disclose": [
-            "Bidding date",
-            "Issuer Name",
-            "ISIN",
-            "Issue Description",
-            "Type of Issuance",
-            "Allotment date",
-            "Face Value",
-            "Credit Rating",
-            "Type of Book Bidding",
-            "Price",
-            "Spread",
-            "Yield",
-            "Allotment/settlement manner",
-            "Links to GID/PPM and KID/Term sheet",
-            "Base and Green Shoe sizes",
-            "Amount raised",
-            "Maturity details",
-            "Coupon details",
-            "Successful bidders and investor categories",
-            "Secured/Unsecured",
-            "Anchor investor data",
-            "QIB/Non-QIB data",
-            "Cutoff and Weighted average yields/prices"
-          ]
-        }
+    "Analyze": [
+      {
+        "clause_no": "5.2",
+        "referred_circular": "SEBI/HO/DDHS/PoD1/P/CIR/2024/54 dated May 22, 2024",
+        "referred_circular_clause_no": "Chapter VI, Clause 5.2",
+        "reference_context": "The Issuer shall provide the Placement Memorandum and term sheet … to the EBP at least two working days prior to the issue opening date. However, the issuer issuing the securities for the first time … at least three working days…"
+      },
+      {
+        "clause_no": "8.1.2",
+        "referred_circular": "SEBI/HO/DDHS/PoD1/P/CIR/2024/54 dated May 22, 2024",
+        "referred_circular_clause_no": "Chapter VI, Clause 8.1.2",
+        "reference_context": "The quantum of allocation(s) to the anchor investor(s) shall be at the discretion of the issuer, subject to total allocation to the anchor(s) not exceeding the base issue size, as per thresholds mentioned below: …"
+      },
+      {
+        "clause_no": "8.1.4",
+        "referred_circular": "SEBI/HO/DDHS/PoD1/P/CIR/2024/54 dated May 22, 2024",
+        "referred_circular_clause_no": "Chapter VI, Clause 8.1.4",
+        "reference_context": "If the issuer opts for anchor portion, the same shall be suitably disclosed in the placement memorandum and the term sheet along with the relevant quantum."
+      },
+      {
+        "clause_no": "8.1.5",
+        "referred_circular": "SEBI/HO/DDHS/PoD1/P/CIR/2024/54 dated May 22, 2024",
+        "referred_circular_clause_no": "Chapter VI, Clause 8.1.5",
+        "reference_context": "Issuer shall disclose details of the anchor investor(s) and the corresponding quantum allocated, to the EBP, along with the Placement Memorandum and the term sheet. Such anchor investors shall provide electronic confirmation …"
+      },
+      {
+        "clause_no": "7.11.3",
+        "referred_circular": "SEBI/HO/DDHS/PoD1/P/CIR/2024/54 dated May 22, 2024",
+        "referred_circular_clause_no": "Chapter VI, Clause 7.11.3",
+        "reference_context": "If there are two or more bids at cut-off coupon/ price/ spread, then allotment shall be done on ‘pro-rata’ basis. The same is explained by way of an illustration in Annexure-VI A."
+      },
+      {
+        "clause_no": "12.2",
+        "referred_circular": "SEBI/HO/DDHS/PoD1/P/CIR/2024/54 dated May 22, 2024",
+        "referred_circular_clause_no": "Chapter VI, Clause 12.2",
+        "reference_context": "EBPs shall ensure that following details regarding the issuance is updated on its website by end of T-day for issues closing up to 1 p.m. on T-day and by 1 p.m. on T+1 day for the remaining issues: …"
+      },
+      {
+        "clause_no": "3",
+        "referred_circular": "SEBI/HO/DDHS/PoD1/P/CIR/2024/54 dated May 22, 2024",
+        "referred_circular_clause_no": "Chapter VII, Clause 3",
+        "reference_context": "The timelines for each of the steps involved, from submission of the application for in-principle approval to the listing of the security on the stock exchange(s), are given below: Table 1: Timelines for issuance and listing …"
       }
-    },
-    "effective_dates": {
-      "immediate": "Other provisions",
-      "3_months": ["Clauses 5.2, 8.1.2, 8.1.4, 8.1.5, 12.2 of Chapter VI", "Clause 3 of Chapter VII"],
-      "6_months": ["Clauses 3 and 7.11.3 of Chapter VI"]
-    },
-    "annexure": {
-      "bid_book": [
-        { "bidder": "A", "amount": 300, "price": 100, "timestamp": "10:02:10" },
-        { "bidder": "B", "amount": 100, "price": 100.05, "timestamp": "10:11:15" },
-        { "bidder": "C", "amount": 150, "price": 100.05, "timestamp": "10:12:10" },
-        { "bidder": "D", "amount": 400, "price": 100.04, "timestamp": "10:15:00" },
-        { "bidder": "E", "amount": 500, "price": 99.99, "timestamp": "10:32:10" },
-        { "bidder": "C", "amount": 150, "price": 100.03, "timestamp": "10:12:10" },
-        { "bidder": "F", "amount": 300, "price": 100, "timestamp": "10:45:00" },
-        { "bidder": "G", "amount": 200, "price": 99.98, "timestamp": "10:51:10" },
-        { "bidder": "B", "amount": 100, "price": 100.04, "timestamp": "10:55:12" }
-      ]
-    }
+    ],
+    "Clause": [
+      {
+        "date": "May 16, 2025",
+        "key_note": "Date of issue of this circular",
+        "circular_reference": "SEBI/HO/DDHS/DDHS-PoD-1/P/CIR/2025/0000000073       May 16, 2025"
+      },
+      {
+        "date": "May 22, 2024",
+        "key_note": "Date of the Master Circular being revised",
+        "circular_reference": "…Master circular no. SEBI/HO/DDHS/PoD1/P/CIR/2024/54 dated May 22, 2024 in its Chapter VI…"
+      },
+      {
+        "date": "3 months from May 16, 2025",
+        "key_note": "Effective date for Clauses 5.2, 8.1.2, 8.1.4, 8.1.5 & 12.2 of Chapter VI and Clause 3 of Chapter VII",
+        "circular_reference": "Clauses 5.2, 8.1.2, 8.1.4, 8.1.5 and 12.2 of Chapter VI of the Master circular and Clause 3 of Chapter VII… 3 months from the date of this circular"
+      },
+      {
+        "date": "6 months from May 16, 2025",
+        "key_note": "Effective date for Clauses 3 and 7.11.3 of Chapter VI",
+        "circular_reference": "Clauses 3 and 7.11.3 of Chapter VI of the Master circular… 6 months from the date of this circular"
+      }
+    ],
+    "ComplianceReq": [
+      {
+        "summary": "Make EBP platform mandatory for private placements ≥ ₹20 Cr",
+        "organization_impact": "Revise capital-markets policy to ensure all qualifying issues use the EBP; update roles and approvals",
+        "it_changes_needed": "Integrate back-end systems with SEBI’s EBP API for automated bid submission and confirmation",
+        "operational_changes_needed": "Train deal-teams on the EBP workflow; update SOPs and checklists to include EBP eligibility checks",
+        "ai_instruction": "Configure AI to flag any new issue ≥ ₹20 Cr and auto-suggest EBP routing procedures"
+      },
+      {
+        "summary": "Submit placement memorandum & term-sheet ≥ 2 working days before open date",
+        "organization_impact": "Adjust internal deadlines and review calendar to finalize offering documents earlier",
+        "it_changes_needed": "Implement automated reminder and deadline-tracking in document management system",
+        "operational_changes_needed": "Shift legal and compliance review phases earlier; assign clear document-sign-off owners",
+        "ai_instruction": "Train AI to monitor document status and trigger alerts two days before planned issue opening"
+      },
+      {
+        "summary": "Disclose anchor-investor allocations and capture e-confirmations by T-1 day",
+        "organization_impact": "Update investor-relations playbook to include anchor allocation caps and disclosures",
+        "it_changes_needed": "Extend subscription portal to record anchor-quantum fields and integrate e-confirmation capture",
+        "operational_changes_needed": "Establish timelines for collecting electronic confirmations; liaise proactively with anchor investors",
+        "ai_instruction": "Use AI to validate anchor allocation against caps and auto-remind investors for e-confirmations"
+      },
+      {
+        "summary": "Publish real-time issue reporting on website by end T-day/T+1",
+        "organization_impact": "Strengthen web-governance process and institute SLAs for compliance reporting",
+        "it_changes_needed": "Build automated data feeds from issuance platform to corporate website with validation rules",
+        "operational_changes_needed": "Designate a daily “reporting owner” and schedule mid-day and next-day publication tasks",
+        "ai_instruction": "Deploy AI to verify completeness of issue data and auto-post to the website on schedule"
+      },
+      {
+        "summary": "Follow standardized issuance timelines for approvals and listing steps",
+        "organization_impact": "Update project-management templates to include SEBI timelines (in-principle approval, lottery, listing)",
+        "it_changes_needed": "Add workflow-tracking modules in CRM/issuance systems with deadline alerts",
+        "operational_changes_needed": "Define escalation paths for missed SEBI deadlines; integrate new milestones into team calendars",
+        "ai_instruction": "Set up AI-driven timeline monitoring to alert stakeholders of upcoming SEBI milestones"
+      },
+      {
+        "summary": "Phase in new rules: key clauses in 3 months; remaining in 6 months",
+        "organization_impact": "Align change-management and training schedules to the 3-month and 6-month effective dates",
+        "it_changes_needed": "Implement feature flags in EBP-integration code to toggle new validations on effective dates",
+        "operational_changes_needed": "Conduct two waves of training and process updates; track readiness via RACI matrix",
+        "ai_instruction": "Use AI to generate rollout readiness reports and recommend remedial actions ahead of each phase"
+      }
+    ],
+    "reporting": [
+      {
+        "clause_no": "12.2",
+        "report_item": "Bidding date / Date of Issuance",
+        "description": "Actual date when bids were invited",
+        "actionable_title": "Publish bidding date",
+        "assigned_to": "Compliance Team",
+        "due_date": "2025-05-17",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Issuer Name",
+        "description": "Legal name of the issuing entity",
+        "actionable_title": "Update issuer details",
+        "assigned_to": "IR Team",
+        "due_date": "2025-05-17",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "ISIN",
+        "description": "International Securities Identification Number",
+        "actionable_title": "Verify ISIN",
+        "assigned_to": "Finance Team",
+        "due_date": "2025-05-17",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Issue Description",
+        "description": "Brief description of the security issued",
+        "actionable_title": "Draft issue summary",
+        "assigned_to": "Product Team",
+        "due_date": "2025-05-17",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Type of Issuance",
+        "description": "Single, shelf or subsequent placement",
+        "actionable_title": "Classify issuance type",
+        "assigned_to": "Deal Desk",
+        "due_date": "2025-05-17",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Allotment date",
+        "description": "Date on which allotment finalized",
+        "actionable_title": "Publish allotment date",
+        "assigned_to": "Operations Team",
+        "due_date": "2025-05-18",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Face Value",
+        "description": "Denomination per unit in Rs. Lakhs",
+        "actionable_title": "Confirm face value",
+        "assigned_to": "Finance Team",
+        "due_date": "2025-05-18",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Credit Rating",
+        "description": "Rating by SEBI-registered agency",
+        "actionable_title": "Verify rating",
+        "assigned_to": "Risk Team",
+        "due_date": "2025-05-18",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Type of Book Bidding",
+        "description": "Uniform or multiple price book",
+        "actionable_title": "Update bidding type",
+        "assigned_to": "IT Team",
+        "due_date": "2025-05-17",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Price",
+        "description": "Cut-off price or price band in Rs.",
+        "actionable_title": "Confirm price details",
+        "assigned_to": "Finance Team",
+        "due_date": "2025-05-18",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Spread",
+        "description": "Difference over benchmark yield/price (bps)",
+        "actionable_title": "Compute spread",
+        "assigned_to": "Analytics",
+        "due_date": "2025-05-18",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Yield",
+        "description": "Coupon yield (%)",
+        "actionable_title": "Verify yield",
+        "assigned_to": "Analytics",
+        "due_date": "2025-05-18",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Manner of Allotment",
+        "description": "Pro-rata or uniform yield",
+        "actionable_title": "Document allotment method",
+        "assigned_to": "Compliance Team",
+        "due_date": "2025-05-17",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Manner of Settlement",
+        "description": "Delivery versus payment, etc.",
+        "actionable_title": "Finalize settlement method",
+        "assigned_to": "Operations Team",
+        "due_date": "2025-05-17",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Link of GID/PPM",
+        "description": "URL to General Information Document/PPM",
+        "actionable_title": "Upload GID/PPM link",
+        "assigned_to": "IT Team",
+        "due_date": "2025-05-17",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Link of KID/Term sheet",
+        "description": "URL to Key Information Document/term sheet",
+        "actionable_title": "Publish term sheet link",
+        "assigned_to": "IT Team",
+        "due_date": "2025-05-17",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Base Issue Size",
+        "description": "Total size before green-shoe (in Rs. Cr)",
+        "actionable_title": "Confirm base issue size",
+        "assigned_to": "Finance Team",
+        "due_date": "2025-05-18",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Green Shoe Option",
+        "description": "Size of green-shoe tranche (in Rs. Cr)",
+        "actionable_title": "Verify green-shoe option",
+        "assigned_to": "Deal Desk",
+        "due_date": "2025-05-18",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Amount Raised",
+        "description": "Final funds raised (in Rs. Cr)",
+        "actionable_title": "Record amount raised",
+        "assigned_to": "Finance Team",
+        "due_date": "2025-05-18",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Maturity Date",
+        "description": "Redemption date of security",
+        "actionable_title": "Confirm maturity date",
+        "assigned_to": "Operations Team",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Coupon",
+        "description": "Interest rate (%)",
+        "actionable_title": "Verify coupon rate",
+        "assigned_to": "Analytics",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Coupon Frequency",
+        "description": "Annual, semi-annual, etc.",
+        "actionable_title": "Document frequency",
+        "assigned_to": "Compliance Team",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "No. of Successful Bidders",
+        "description": "Count & categories of allotted bidders",
+        "actionable_title": "Summarize bidder count",
+        "assigned_to": "Analytics",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Type of Bidding",
+        "description": "Book-build, fixed-price, etc.",
+        "actionable_title": "Classify bidding type",
+        "assigned_to": "Deal Desk",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Secured/Unsecured",
+        "description": "Security nature",
+        "actionable_title": "Verify security type",
+        "assigned_to": "Risk Team",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Tenor",
+        "description": "Time to maturity",
+        "actionable_title": "Document tenor",
+        "assigned_to": "Compliance Team",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Maturity Type",
+        "description": "Bullet, amortising, etc.",
+        "actionable_title": "Confirm maturity type",
+        "assigned_to": "Operations Team",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Interest Payment Type",
+        "description": "In arrears, upfront, etc.",
+        "actionable_title": "Record payment type",
+        "assigned_to": "Finance Team",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Anchor Amount",
+        "description": "Quantum allotted to anchor investors",
+        "actionable_title": "Compute anchor amount",
+        "assigned_to": "Deal Desk",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Number of Anchor Investors",
+        "description": "Count of participating anchors",
+        "actionable_title": "Count anchors",
+        "assigned_to": "Compliance Team",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Total QIB Bidding",
+        "description": "Total Qualified Institutional Buyer bids",
+        "actionable_title": "Sum QIB bids",
+        "assigned_to": "Analytics",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Total QIB Amount Accepted",
+        "description": "QIB amount allotted",
+        "actionable_title": "Record QIB allotment",
+        "assigned_to": "Operations Team",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Total Non-QIB Bidding",
+        "description": "Total non-QIB bids",
+        "actionable_title": "Summarize non-QIB bids",
+        "assigned_to": "Analytics",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Total Non-QIB Amount Accepted",
+        "description": "Non-QIB amount allotted",
+        "actionable_title": "Record non-QIB allotment",
+        "assigned_to": "Operations Team",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Cut-off Yield/Price",
+        "description": "Final cut-off yield or price",
+        "actionable_title": "Finalize cut-off",
+        "assigned_to": "Compliance Team",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "12.2",
+        "report_item": "Weighted average cut-off yield/price",
+        "description": "VWAP of cut-off",
+        "actionable_title": "Compute VWAP",
+        "assigned_to": "Analytics",
+        "due_date": "2025-05-19",
+        "compliance_status": "Pending"
+      }
+    ],
+    "disclosure": [
+      {
+        "clause_no": "8.1.2",
+        "disclosure_item": "Issue size & green-shoe portion",
+        "context": "Base size and green-shoe (≤5× base) in placement memorandum",
+        "actionable_title": "Verify issue size disclosure",
+        "assigned_to": "Deal Desk",
+        "due_date": "2025-05-18",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "8.1.2",
+        "disclosure_item": "Anchor-portion cap by rating",
+        "context": "AA–AA-:30%; A+/A-:40%; Others:50%",
+        "actionable_title": "Calculate anchor cap",
+        "assigned_to": "Analytics",
+        "due_date": "2025-05-18",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "8.1.4",
+        "disclosure_item": "Anchor-portion election",
+        "context": "Disclose quantum and option in term-sheet",
+        "actionable_title": "Prepare term-sheet note",
+        "assigned_to": "Legal Team",
+        "due_date": "2025-05-18",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "8.1.5",
+        "disclosure_item": "Anchor investor details & e-confirmation",
+        "context": "List anchors & capture e-confirm by T-1 day",
+        "actionable_title": "Collect e-confirmations",
+        "assigned_to": "Operations Team",
+        "due_date": "2025-05-17",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "7.11.3",
+        "disclosure_item": "Cut-off allotment methodology",
+        "context": "Pro-rata or uniform yield as per Annexure-VI A",
+        "actionable_title": "Update methodology note",
+        "assigned_to": "Compliance Team",
+        "due_date": "2025-05-17",
+        "compliance_status": "Pending"
+      },
+      {
+        "clause_no": "5.2",
+        "disclosure_item": "Placement memorandum & term-sheet timing",
+        "context": "3 days (first-time) or 2 days before open",
+        "actionable_title": "Set document timelines",
+        "assigned_to": "Legal Team",
+        "due_date": "2025-05-17",
+        "compliance_status": "Pending"
+      }
+    ],
+    "reviewTimelines": [
+      {
+        "category": "EBP Issuance",
+        "timeline": "T-2 or T-3",
+        "activity": "In‑principle approval must be received prior to providing the Placement Memorandum and term sheet to the EBP platform."
+      },
+      {
+        "category": "Non‑EBP Issuance",
+        "timeline": "T",
+        "activity": "In‑principle approval must be received prior to the issue opening date."
+      }
+    ],
+    "knownBlockers": [
+      {
+        "blocker": "Delay in document submission",
+        "description": "Placement Memorandum & term sheet must now be submitted 2 working days before issue opening (or 3 working days for first‑time EBP issuers)."
+      },
+      {
+        "blocker": "Transparency of Green Shoe Option",
+        "description": "Green shoe portion capped at 5× base issue size; issuers must disclose both the cap and prior‑year usage of green‑shoe options."
+      },
+      {
+        "blocker": "Uncertainty in allotment procedures",
+        "description": "Allotment at the cut‑off coupon/price/spread is standardized to be done on a pro‑rata basis, with detailed illustrations provided in Annexure VI‑A."
+      },
+      {
+        "blocker": "Anchor investor allocation limits",
+        "description": "Anchor portions now specified by credit rating: AAA/AA+/AA/AA‑ ≤30%, A+/A‑ ≤40%, Others ≤50%. Anchor confirmations must be received by T‑1 day; unconfirmed amounts are added back to the base issue size."
+      },
+      {
+        "blocker": "Inconsistent disclosure on EBP websites",
+        "description": "EBPs must update a comprehensive set of issuance details by end of T‑day (if closed by 1 PM) or by 1 PM on T+1 (otherwise)."
+      }
+    ]
   }
 }

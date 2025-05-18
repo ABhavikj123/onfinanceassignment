@@ -1,84 +1,71 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+"use client";
+import React from "react";
+import { Clock, AlertTriangle } from "lucide-react";
 
-interface BidBookItem {
-  bidder: string
-  amount: number
-  price: number
-  timestamp: string
+interface ReviewTimeline {
+    category: string;
+    timeline: string;
+    activity: string;
 }
 
-interface ReviewTimelinesKnownBlockersProps {
-  effectiveDates: {
-    immediate: string
-    "3_months": string[]
-    "6_months": string[]
-  }
-  bidBook: BidBookItem[]
+interface KnownBlocker {
+    blocker: string;
+    description: string;
 }
 
-export default function ReviewTimelinesKnownBlockers({ effectiveDates, bidBook }: ReviewTimelinesKnownBlockersProps) {
-  return (
-    <div className="space-y-6">
-      <Card className="bg-white shadow">
-        <CardHeader className="border-b">
-          <CardTitle className="text-gray-900">Effective Dates</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4 p-6">
-          <div>
-            <h3 className="text-sm font-medium text-gray-700">Immediate</h3>
-            <p className="mt-1 text-gray-900">{effectiveDates.immediate}</p>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-medium text-gray-700">3 Months</h3>
-            <ul className="list-disc pl-5 mt-1 space-y-1 text-gray-900">
-              {effectiveDates["3_months"].map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-medium text-gray-700">6 Months</h3>
-            <ul className="list-disc pl-5 mt-1 space-y-1 text-gray-900">
-              {effectiveDates["6_months"].map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card className="bg-white shadow">
-        <CardHeader className="border-b">
-          <CardTitle className="text-gray-900">Bid Book</CardTitle>
-        </CardHeader>
-        <CardContent className="p-6">
-          <div className="overflow-x-auto">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="text-gray-700">Bidder</TableHead>
-                  <TableHead className="text-right text-gray-700">Amount</TableHead>
-                  <TableHead className="text-right text-gray-700">Price</TableHead>
-                  <TableHead className="text-gray-700">Timestamp</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {bidBook.map((bid, index) => (
-                  <TableRow key={index}>
-                    <TableCell className="font-medium text-gray-900">{bid.bidder}</TableCell>
-                    <TableCell className="text-right text-gray-900">{bid.amount}</TableCell>
-                    <TableCell className="text-right text-gray-900">{bid.price}</TableCell>
-                    <TableCell className="text-gray-900">{bid.timestamp}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  )
+interface Props {
+    review: ReviewTimeline[];
+    knownblocker: KnownBlocker[];
 }
+
+const ReviewTimelinesKnownBlockers: React.FC<Props> = ({ review, knownblocker }) => {
+    return (
+        <div className="max-w-4xl mx-auto space-y-10">
+            {/* Timelines Section */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div className="border-b bg-gradient-to-r from-blue-50 to-white p-4 flex items-center gap-3">
+                    <Clock className="w-6 h-6 text-blue-600" />
+                    <h2 className="text-xl font-semibold text-gray-800">Key Review Timelines</h2>
+                </div>
+                <div className="p-6">
+                    <table className="w-full border rounded-lg overflow-hidden">
+                        <thead>
+                            <tr className="bg-blue-50">
+                                <th className="p-3 text-left font-semibold text-gray-700">Category</th>
+                                <th className="p-3 text-left font-semibold text-gray-700">Timeline</th>
+                                <th className="p-3 text-left font-semibold text-gray-700">Activity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {review.map((item, idx) => (
+                                <tr key={idx} className="border-b last:border-b-0 hover:bg-blue-50 transition">
+                                    <td className="p-3">{item.category}</td>
+                                    <td className="p-3 font-mono text-blue-700">{item.timeline}</td>
+                                    <td className="p-3">{item.activity}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {/* Known Blockers Section */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div className="border-b bg-gradient-to-r from-red-50 to-white p-4 flex items-center gap-3">
+                    <AlertTriangle className="w-6 h-6 text-red-600" />
+                    <h2 className="text-xl font-semibold text-gray-800">Known Blockers</h2>
+                </div>
+                <div className="p-6 space-y-4">
+                    {knownblocker.map((blocker, idx) => (
+                        <div key={idx} className="border-l-4 border-red-400 bg-red-50 p-4 rounded-lg shadow-sm">
+                            <div className="font-semibold text-red-700 mb-1">{blocker.blocker}</div>
+                            <div className="text-gray-700">{blocker.description}</div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ReviewTimelinesKnownBlockers;

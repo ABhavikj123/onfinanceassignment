@@ -1,92 +1,88 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import React, { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Table, TableHeader, TableHead, TableBody, TableRow, TableCell } from "@/components/ui/table";
+import { Input } from "@/components/ui/input";
+import { Calendar, Edit2 } from "lucide-react";
 
-interface ReviewKeyNotesDatesProps {
-  data: {
-    mandatory_EBP_use: {
-      threshold: string
-      conditions: string[]
-    }
-    optional_use_EBP: string[]
-    issuer_disclosures: {
-      placement_memorandum: {
-        timing: {
-          existing_issuer: string
-          first_time_issuer: string
-        }
-        contents: string[]
-      }
-    }
-  }
+export interface KeyNoteDateItem {
+  date: string;
+  key_note: string;
+  circular_reference: string;
 }
 
-export default function ReviewKeyNotesDates({ data }: ReviewKeyNotesDatesProps) {
+interface ReviewKeyNotesDatesProps {
+  data: KeyNoteDateItem[];
+}
+
+export default function ReviewKeyNotesDates({ data: initialData }: ReviewKeyNotesDatesProps) {
+  const [data, setData] = useState<KeyNoteDateItem[]>(initialData);
+  const [editing, setEditing] = useState<{ row: number; col: keyof KeyNoteDateItem } | null>(null);
+
+  const startEdit = (rowIndex: number, colKey: keyof KeyNoteDateItem) => setEditing({ row: rowIndex, col: colKey });
+  const saveEdit = (rowIndex: number, colKey: keyof KeyNoteDateItem, value: string) => {
+    const updated = [...data];
+    updated[rowIndex][colKey] = value;
+    setData(updated);
+    setEditing(null);
+  };
+
   return (
-    <div className="space-y-6">
-      <Card className="bg-white shadow">
-        <CardHeader className="border-b">
-          <CardTitle className="text-gray-900">Key Notes & Dates</CardTitle>
-        </CardHeader>
-        <CardContent className="p-6">
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-gray-900 font-medium">Mandatory EBP Use</AccordionTrigger>
-              <AccordionContent className="text-gray-900">
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-sm font-medium text-gray-700">Threshold</h3>
-                    <p className="mt-1">{data.mandatory_EBP_use.threshold}</p>
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-medium text-gray-700">Conditions</h3>
-                    <ul className="list-disc pl-5 mt-1 space-y-1">
-                      {data.mandatory_EBP_use.conditions.map((condition, index) => (
-                        <li key={index}>{condition}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-2">
-              <AccordionTrigger className="text-gray-900 font-medium">Optional EBP Use</AccordionTrigger>
-              <AccordionContent className="text-gray-900">
-                <ul className="list-disc pl-5 space-y-1">
-                  {data.optional_use_EBP.map((item, index) => (
-                    <li key={index}>{item}</li>
+    <Card className="bg-white shadow-lg">
+      <CardHeader className="border-b bg-gray-50">
+        <CardTitle className="flex items-center gap-2 text-gray-900">
+          <Calendar className="w-5 h-5 text-blue-500" />
+          Key Notes & Dates
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="p-6">
+        <div className="mb-4 p-4 bg-blue-50 rounded-lg border border-blue-100">
+          <p className="text-sm text-blue-700 flex items-center gap-2">
+            <Edit2 className="w-4 h-4" />
+            Double-click any cell to edit its content
+          </p>
+        </div>
+        <div className="rounded-lg border overflow-hidden">
+          <Table>
+            <TableHeader>
+              <TableRow className="bg-gray-100">
+                <TableHead className="font-semibold text-gray-700">Date</TableHead>
+                <TableHead className="font-semibold text-gray-700">Purpose</TableHead>
+                <TableHead className="font-semibold text-gray-700">Reference</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {data.map((row, i) => (
+                <TableRow key={i} className="hover:bg-gray-50 transition-colors">
+                  {(Object.keys(row) as (keyof KeyNoteDateItem)[]).map(col => (
+                    <TableCell 
+                      key={col} 
+                      className="cursor-pointer relative group"
+                      onDoubleClick={() => startEdit(i, col)}
+                    >
+                      {editing?.row === i && editing.col === col ? (
+                        <Input
+                          className="w-full focus:ring-2 focus:ring-blue-500"
+                          defaultValue={row[col] as string}
+                          onBlur={e => saveEdit(i, col, e.target.value)}
+                          autoFocus
+                        />
+                      ) : (
+                        <div className="group-hover:bg-blue-50 p-2 rounded transition-colors">
+                          {col === 'date' ? (
+                            <span className="font-medium text-blue-600">{row[col]}</span>
+                          ) : (
+                            row[col]
+                          )}
+                        </div>
+                      )}
+                    </TableCell>
                   ))}
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-3">
-              <AccordionTrigger className="text-gray-900 font-medium">Issuer Disclosures</AccordionTrigger>
-              <AccordionContent className="text-gray-900">
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-sm font-medium text-gray-700">Placement Memorandum Timing</h3>
-                    <ul className="list-disc pl-5 mt-1 space-y-1">
-                      <li>Existing Issuer: {data.issuer_disclosures.placement_memorandum.timing.existing_issuer}</li>
-                      <li>
-                        First Time Issuer: {data.issuer_disclosures.placement_memorandum.timing.first_time_issuer}
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-medium text-gray-700">Contents</h3>
-                    <ul className="list-disc pl-5 mt-1 space-y-1">
-                      {data.issuer_disclosures.placement_memorandum.contents.map((item, index) => (
-                        <li key={index}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </CardContent>
-      </Card>
-    </div>
-  )
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      </CardContent>
+    </Card>
+  );
 }

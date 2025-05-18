@@ -1,135 +1,80 @@
-"use client"
-
-import { useState } from "react"
-import { MenuIcon, XIcon } from "lucide-react"
-import VerifyCircularReflection from "@/components/VerifyCircularReflection"
-import AnalyzeReferences from "@/components/AnalyzeReferences"
-import ReviewKeyNotesDates from "@/components/ReviewKeyNotesDates"
-import DoubleCheckComplianceReqs from "@/components/DoubleCheckComplianceReqs"
-import ExtractReportingDisclosures from "@/components/ExtractReportingDisclosures"
-import ReviewTimelinesKnownBlockers from "@/components/ReviewTimelinesKnownBlockers"
-import circularData from "@/data/circularData.json"
+'use client'
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { FileText, MenuIcon, XIcon } from "lucide-react";
+import VerifyCircularReflection from "@/components/VerifyCircularReflection";
+import AnalyzeReferences from "@/components/AnalyzeReferences";
+import ReviewKeyNotesDates from "@/components/ReviewKeyNotesDates";
+import DoubleCheckComplianceReqs from "@/components/DoubleCheckComplianceReqs";
+import ExtractReportingDisclosures from "@/components/ExtractReportingDisclosures";
+import ReviewTimelinesKnownBlockers from "@/components/ReviewTimelinesKnownBlockers";
+import circularData from "@/data/circularData.json";
 
 export default function Dashboard() {
-  const [activeSection, setActiveSection] = useState("verify")
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [active, setActive] = useState<string>("verify");
+  const [collapsed, setCollapsed] = useState<boolean>(false);
 
   const sections = [
-    {
-      id: "verify",
-      name: "Step 1: Verify Circular Extraction",
-      component: <VerifyCircularReflection data={circularData.circular} />,
-    },
-    {
-      id: "analyze",
-      name: "Step 2: Analyze References",
-      component: <AnalyzeReferences data={circularData.circular.applicable_to} />,
-    },
-    {
-      id: "review",
-      name: "Step 3: Review Key Notes & Dates",
-      component: <ReviewKeyNotesDates data={circularData.circular.modifications.chapter_VI} />,
-    },
-    {
-      id: "compliance",
-      name: "Step 4: Double-Check Compliance Reqs",
-      component: <DoubleCheckComplianceReqs data={circularData.circular.modifications.chapter_VI} />,
-    },
-    {
-      id: "reporting",
-      name: "Step 5: Extract Reporting & Disclosures",
-      component: <ExtractReportingDisclosures data={circularData.circular.modifications.chapter_VI.EBP_reporting} />,
-    },
-    {
-      id: "timelines",
-      name: "Step 6: Review Timelines & Known Blockers",
-      component: (
-        <ReviewTimelinesKnownBlockers
-          effectiveDates={circularData.circular.effective_dates}
-          bidBook={circularData.circular.annexure.bid_book}
-        />
-      ),
-    },
-  ]
+    { id: "verify", name: "Step 1: Verify", comp: <VerifyCircularReflection /> },
+    { id: "analyze", name: "Step 2: Analyze", comp: <AnalyzeReferences data={circularData.circular.Analyze} /> },
+    { id: "review", name: "Step 3: Review Dates", comp: <ReviewKeyNotesDates data={circularData.circular.Clause} /> },
+    { id: "compliance", name: "Step 4: Compliance", comp: <DoubleCheckComplianceReqs data={circularData.circular.ComplianceReq} /> },
+    { id: "reporting", name: "Step 5: Reporting", comp: <ExtractReportingDisclosures reportdata={circularData.circular.reporting} disclosuredata={circularData.circular.disclosure} /> },
+    { id: "timelines", name: "Step 6: Timelines", comp: <ReviewTimelinesKnownBlockers review={circularData.circular.reviewTimelines}
+    knownblocker={circularData.circular.knownBlockers} /> },
+  ];
 
-  const activeComponent = sections.find((section) => section.id === activeSection)?.component
-
-  // Toggle mobile menu
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+  const idx = sections.findIndex(s => s.id === active);
+  const ActiveComp = sections[idx]?.comp;
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      {/* Mobile menu button */}
-      <div className="fixed top-0 left-0 z-20 p-4 md:hidden">
-        <button
-          onClick={toggleMobileMenu}
-          className="p-2 rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-        >
-          {isMobileMenuOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
-        </button>
-      </div>
-
-      {/* Sidebar for desktop */}
-      <div className="hidden md:block w-64 bg-gray-800 text-white">
-        <div className="h-16 flex items-center px-4 border-b border-gray-700">
-          <h2 className="text-lg font-medium">Circular Analysis</h2>
+    <div className="flex h-screen bg-gray-900">
+      {/* Sidebar */}
+      <aside className={`${collapsed ? "w-16" : "w-64"} transition-all duration-200 flex flex-col border-r border-gray-700`}>  
+        <div className="flex items-center justify-between h-16 px-4 border-b border-gray-700">
+          <span className={`font-bold text-white ${collapsed ? "hidden" : "block"}`}>Circular</span>
+          <Button className="bg-gray-900 hover:bg-gray-700" onClick={() => setCollapsed(!collapsed)}>
+            {collapsed ? <MenuIcon className="h-5 w-5" /> : <XIcon className="h-5 w-5 text-white" />}
+          </Button>
         </div>
-        <nav className="mt-5 px-2 space-y-1">
-          {sections.map((section) => (
-            <button
-              key={section.id}
-              onClick={() => setActiveSection(section.id)}
-              className={`${
-                activeSection === section.id
-                  ? "bg-gray-900 text-white"
-                  : "text-gray-300 hover:bg-gray-700 hover:text-white"
-              } group flex items-center px-2 py-2 text-sm font-medium rounded-md w-full text-left`}
-            >
-              {section.name}
-            </button>
-          ))}
-        </nav>
-      </div>
-
-      {/* Mobile sidebar */}
-      <div className={`${isMobileMenuOpen ? "fixed inset-0 z-10 flex" : "hidden"} md:hidden`}>
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-75" onClick={toggleMobileMenu}></div>
-        <div className="relative flex-1 flex flex-col max-w-xs w-64 bg-gray-800 text-white">
-          <div className="h-16 flex items-center px-4 border-b border-gray-700">
-            <h2 className="text-lg font-medium">Circular Analysis</h2>
-          </div>
-          <nav className="mt-5 px-2 space-y-1">
-            {sections.map((section) => (
+        <div className="flex-1 overflow-y-auto py-4">
+          <div className="space-y-2">
+            {sections.map(s => (
               <button
-                key={section.id}
-                onClick={() => {
-                  setActiveSection(section.id)
-                  setIsMobileMenuOpen(false)
-                }}
-                className={`${
-                  activeSection === section.id
-                    ? "bg-gray-900 text-white"
-                    : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                } group flex items-center px-2 py-2 text-sm font-medium rounded-md w-full text-left`}
+                key={s.id}
+                onClick={() => setActive(s.id)}
+                className={`flex items-center w-full px-4 py-2 text-sm rounded-md transition-colors hover:bg-gray-700 ${active === s.id ? "bg-gray-700 text-white" : "text-gray-400"}`}
               >
-                {section.name}
+                <FileText className="w-5 h-5 mr-3" />
+                {!collapsed && <span>{s.name}</span>}
               </button>
             ))}
-          </nav>
+          </div>
         </div>
-      </div>
+      </aside>
 
-      {/* Main content */}
-      <div className="flex-1 overflow-auto bg-white">
-        <main className="p-6">
-          <h1 className="text-2xl font-semibold text-gray-900 mb-6">
-            {sections.find((section) => section.id === activeSection)?.name}
-          </h1>
-          {activeComponent}
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col bg-white border-l border-gray-200 m-2 rounded-2xl">
+        {/* Header */}
+        <header className="flex items-center justify-between px-6 py-3 ">
+          <div className="flex items-center">
+            <Button variant="ghost" disabled={idx <= 0} onClick={() => setActive(sections[idx - 1].id)}>
+              Previous
+            </Button>
+          </div>
+          <h1 className="text-lg font-medium text-white">{sections[idx].name}</h1>
+          <Button variant="ghost" disabled={idx >= sections.length - 1} onClick={() => setActive(sections[idx + 1].id)}>
+            Next
+          </Button>
+        </header>
+
+        {/* Content */}
+        <main className="flex-1 overflow-y-auto p-6">
+          <div className="max-w-4xl mx-auto bg-white text-gray-800 rounded-lg shadow-lg p-8"> 
+            {ActiveComp} 
+          </div>
         </main>
       </div>
     </div>
-  )
+  );
 }
